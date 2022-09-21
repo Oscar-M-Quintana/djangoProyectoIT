@@ -1,0 +1,9 @@
+{% extends "zmyapp/layout.html" %}
+<!-- Titulo -->
+{% block title %} {{pelicula.1}} {%endblock%}
+<!-- Bloque body -->
+{% block content %}
+<h1>Comentario numero {{pelicula.0}} de la pelicula {{pelicula.1}}</h1>
+<p>{{pelicula.2}}</p>
+
+{% endblock %}

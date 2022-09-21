@@ -1,0 +1,43 @@
+{% extends "zmyapp/layout.html" %}
+<!-- Este bloque reemplazará el título original "Mi aplicación de Django". -->
+{% block title %} {{ curso.0 }} {% endblock %}
+<!-- Este bloque se ubicará dentro de la etiqueta <main> de layout.html. -->
+{% block content %}
+<table class="tabla-aeropuerto">
+  <thead>
+    <tr>
+      <th>Orden</th>
+      <th>Pelicula</th>
+      <th>Fecha de estreno</th>
+      <th>Clasificación</th>
+      <th>Preventa Online</th>
+    </tr>
+  </thead>
+  {% for nombre, fecha, restriccion, preventa in peliculas %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ nombre }}</td>
+    <td>{{ fecha }}</td>
+    <td>
+        {% if restriccion == 1 %} 
+            U 
+        {% elif restriccion == 2 %} 
+            PG 
+        {% elif restriccion == 3 %}
+            12A 
+        {% elif restriccion == 4 %}
+            15 
+        {% elif restriccion == 5 %}
+            18 
+        {% else %}
+            R-18 
+        {% endif %}
+    </td>
+    <td>{% if preventa %} Si {% else %} No {% endif %}</td>
+  </tr>
+  {% endfor %}
+</table>
+<a href="{% url 'nueva_pelicula' %}">
+  <span class="texto">AGREGAR PELICULA</span>
+</a>
+{% endblock %} {% load static %}

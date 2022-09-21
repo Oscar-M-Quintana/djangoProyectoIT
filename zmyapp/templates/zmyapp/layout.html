@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %} Mi aplicación de Django {% endblock %}</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href='{% static "zmyapp/styles.css" %}'
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <header class="super-cabecera">
+      <nav>
+        <ul>
+          <!--
+              -->
+          <li>
+            <a href="{% url 'index' %}">
+              <i class="fa fa-fw fa-home fa-2x"></i>
+              <span class="borde"></span>
+              <span class="texto">INICIO</span>
+            </a>
+          </li>
+          <!--
+              -->
+          <li>
+            <a href="{% url 'cursos' %}">
+              <i class="fa fa-fw fa-book fa-2x"></i>
+              <span class="borde"></span>
+              <span class="texto">CURSOS</span>
+            </a>
+          </li>
+          <!--
+              -->
+          <li>
+            <a href="{% url 'aeropuertos' %}">
+              <i class="fa fa-fw fa-plane fa-2x"></i>
+              <span class="borde"></span>
+              <span class="texto">AEROPUERTOS</span>
+            </a>
+          </li>
+          <!--
+              -->
+          <li>
+            <a href="{% url 'tabla_peliculas' %}">
+              <i class="fa fa-fw fa-file-movie-o fa-2x"></i>
+              <span class="borde"></span>
+              <span class="texto">PELICULAS</span>
+            </a>
+          </li>
+          <!--
+              -->
+          <li>
+            <a href="{% url 'tabla_comentarios' %}">
+              <i class="fa fa-fw fa-file-movie-o fa-2x"></i>
+              <span class="borde"></span>
+              <span class="texto">COMENTARIOS</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>{% block content %} {% endblock %}</main>
+    <footer>
+      <small>&copy; Mi aplicación de Django</small>
+      <img src='{% static "zmyapp/django2.jpg" %}' />
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!-- Indicamos que queremos extender el archivo layout.html. -->
+{% extends "zmyapp/layout.html" %}
+<!-- Este bloque reemplazará el título original "Mi aplicación de Django". -->
+{% block title %} Lista de aeropuertos {% endblock %}
+<!-- Este bloque se ubicará dentro de la etiqueta <main> de layout.html. -->
+{% block content %}
+<h1>Lista de aeropuertos</h1>
+<div id= "div1">
+  <table>
+    <thead>
+      <tr>
+        <th>Aeropuerto</th>
+        <th>Ciudad</th>
+        <th>Pais</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for nombre, ciudad, pais in lista_aeropuertos %}
+      <tr>
+        <td>{{ nombre }}</td>
+        <td>{{ ciudad }}</td>
+        <td>{{ pais }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+  
+  {% endblock %}

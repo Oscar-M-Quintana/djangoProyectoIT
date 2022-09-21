@@ -1,0 +1,7 @@
+{% extends "zmyapp/layout.html" %}
+<!-- Este bloque reemplazará el título original "Mi aplicación de Django". -->
+{% block title %} {{ curso.0 }} {% endblock %}
+<!-- Este bloque se ubicará dentro de la etiqueta <main> de layout.html. -->
+{% block content %}
+<h1>Información del curso de {{ curso.0 }}</h1>
+Inscriptos: {{ curso.1 }} {% endblock %}

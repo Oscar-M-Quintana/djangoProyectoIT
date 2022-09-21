@@ -1,0 +1,78 @@
+html, body{margin:0; padding:0;}
+
+#div1 {
+    overflow:scroll;
+    height:200px;
+    width:500px;
+}
+#div1 table {
+    border: 2px solid;
+    background-color: rgb(202, 236, 200);}
+
+.tabla-curso {
+    border: 3px solid;
+    background-color: rgb(80, 239, 80);}
+.super-cabecera {
+    position:relative;
+}
+.super-cabecera nav {
+    position:relative;
+    width:80%;
+    max-width:1000px;
+    margin:0 auto;
+    }
+.super-cabecera nav ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+    }
+.super-cabecera nav ul li{
+    position:relative;
+    display:inline-block;
+    vertical-align:top;
+    padding:10px 0 0 0;
+    margin:0;
+    width:20%;
+    }
+.super-cabecera nav ul li a{
+    text-decoration:none;
+    color:#333;
+    }
+.super-cabecera nav ul li i{
+    display:block;
+    /*vertical-align: top;*/
+    width:100%;
+    color:#999;
+    text-align:center;
+    }
+.super-cabecera nav ul li span.borde{
+    display:block;
+    height:4px;
+    background-color:#F48024;
+    margin-top:10px;
+    }
+.super-cabecera nav ul li span.texto{
+    display:block;
+    height:40px;
+    line-height:40px;
+    text-align:center;
+    background-color:#CCC;
+    }
+/* Transiciones en efecto Hover */
+.super-cabecera li,
+.super-cabecera li *{
+    transition:400ms;
+    }
+.super-cabecera nav ul li:hover{
+    background-color:#F1F1F1;
+    }
+.super-cabecera nav ul li:hover span.borde{
+    background-color:#333333;
+    }
+.super-cabecera nav ul li:hover a i{
+    color:#222;
+    }
+.super-cabecera nav ul li:hover a .texto{
+    color:#000;
+    background-color:#BBB;
+    }

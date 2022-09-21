@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index desde Templates</title>
+  </head>
+  <body>
+    <header class="super-cabecera">
+      <nav>
+        <ul>
+          <!--
+              -->
+          <li>
+            <a href="#">
+              <i class="fa fa-fw fa-home fa-5x"></i>
+              <span class="borde"></span>
+              <span class="texto">INICIO</span>
+            </a>
+          </li>
+          <!--
+              -->
+          <li>
+            <a href="#">
+              <i class="fa fa-fw fa-bug fa-5x"></i>
+              <span class="borde"></span>
+              <span class="texto">PARQUE</span>
+            </a>
+          </li>
+          <!--
+              -->
+          <li>
+            <a href="#">
+              <i class="fa fa-fw fa-bath fa-5x"></i>
+              <span class="borde"></span>
+              <span class="texto">BAÑO</span>
+            </a>
+          </li>
+          <!--
+              -->
+          <li>
+            <a href="#">
+              <i class="fa fa-fw fa-plane fa-5x"></i>
+              <span class="borde"></span>
+              <span class="texto">AEROPUERTO</span>
+            </a>
+          </li>
+          <!--
+              -->
+          <li>
+            <a href="#">
+              <i class="fa fa-fw fa-apple fa-5x"></i>
+              <span class="borde"></span>
+              <span class="texto">FRUTERÍA</span>
+            </a>
+          </li>
+          <!--
+          -->
+        </ul>
+      </nav>
+    </header>
+    <h1>Este index se creo mediante render y el directorio Templates</h1>
+    <h3><strong>Hola como estas</strong> <em>{{nombre}}</em> !!</h3>
+    <h4>
+      Hiciste al momento un total de {{cursos}} cursos y ahora estás haciendo el
+      curso de {{ curso_actual.nombre }} en el turno {{ curso_actual.turno }}.
+      Tu primer curso fue {{ cursos_anteriores.0 }}.
+    </h4>
+    <h4>Tus cursos anteriores son los siguientes:</h4>
+    {% for cursos in cursos_anteriores %}
+    <p>{{cursos}}</p>
+    {%endfor%}
+    <img src='{% static "zmyapp/django2.jpg" %}' />
+  </body>
+</html>

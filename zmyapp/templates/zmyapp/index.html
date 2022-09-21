@@ -1,0 +1,15 @@
+<!-- Indicamos que queremos extender el archivo layout.html. -->
+{% extends "zmyapp/layout.html" %}
+<!-- Este bloque reemplazará el título original "Mi aplicación de Django". -->
+{% block title %} Lista de alumnos {% endblock %}
+<!-- Este bloque se ubicará dentro de la etiqueta <main> de layout.html. -->
+{% block content %}
+<body>
+  <h1>Lista de alumnos</h1>
+  <ul>
+    {% for alumno in alumnos %}
+    <li>{{ alumno }}</li>
+    {% endfor %}
+  </ul>
+  {% endblock %}
+</body>
