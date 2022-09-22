@@ -8,18 +8,18 @@ html, body{margin:0; padding:0;}
 #div1 table {
     border: 2px solid;
     background-color: rgb(202, 236, 200);}
-.tabla-aeropuerto{
+.tabla-pelicula{
     border: 2px solid;
     background-color: rgb(124, 122, 216);}
 
-.tabla-aeropuerto thead {
+.tabla-pelicula thead {
     border: 3px solid;
     background-color: rgb(69, 68, 141);}
 
 
 .tabla-curso {
     border: 3px solid;
-    background-color: rgb(80, 239, 80);}
+    background-color: rgb(232, 183, 120);}
 .super-cabecera {
     position:relative;
 }
@@ -56,7 +56,7 @@ html, body{margin:0; padding:0;}
 .super-cabecera nav ul li span.borde{
     display:block;
     height:4px;
-    background-color:#F48024;
+    background-color:#f45124;
     margin-top:10px;
     }
 .super-cabecera nav ul li span.texto{
