@@ -101,6 +101,31 @@ def tabla_comentarios(request):
     return render(request, "zmyapp/tabla_comentarios.html", ctx)
 
 
+def nuevo_comentario(request):
+    if request.method == "POST":
+        form = forms.FormularioComentario(request.POST)
+        if form.is_valid():
+            conn = sqlite3.connect("cursos.db")
+            cursor = conn.cursor()
+            datos = (
+                form.cleaned_data["id"],
+                form.cleaned_data["pelicula"],
+                form.cleaned_data["comentario"],
+            )
+            cursor.execute(
+                "INSERT INTO comentarios VALUES (?, ?, ?)",
+                datos,
+            )
+            conn.commit()
+            conn.close()
+            ctx = {"form": datos}
+            return render(request, "zmyapp/comentariocargado.html", ctx)
+    else:
+        form = forms.FormularioComentario()
+        ctx = {"form": form}
+        return render(request, "zmyapp/nuevocomentario.html", ctx)
+
+
 def nueva_pelicula(request):
     if request.method == "POST":
         form = forms.FormularioPelicula(request.POST)

@@ -20,6 +20,10 @@
     </td>
     <td>{{ comentario }}</td>
   </tr>
+
   {% endfor %}
 </table>
+<a href="{% url 'nuevocomentario' %}">
+  <span class="texto">AGREGAR COMENTARIO</span>
+</a>
 {% endblock %} {% load static %}

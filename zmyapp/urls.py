@@ -12,6 +12,7 @@ urlpatterns = [
     path("indexFromTemplates", views.indexTemplates, name="indexFromTemplates"),
     path("curso/<str:nombre_curso>", views.curso, name="curso"),
     path("tablacomentarios", views.tabla_comentarios, name="tabla_comentarios"),
+    path("nuevocomentario", views.nuevo_comentario, name="nuevocomentario"),
     path(
         "peliculas/<str:nombre>/comentario/<int:numero_comentario>",
         views.peliculas,

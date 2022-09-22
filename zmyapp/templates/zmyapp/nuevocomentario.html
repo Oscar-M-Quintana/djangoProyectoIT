@@ -1,0 +1,11 @@
+{% extends "zmyapp/layout.html" %}
+<!-- Titulo -->
+{% block title %} Agregar comentario {%endblock%}
+<!-- Bloque body -->
+{% block content %}
+<h1>Agregar nuevo comentario</h1>
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <input type="submit" value="Añadir pelicula" />
+</form>
+{% endblock %}

@@ -15,6 +15,12 @@ class FormularioCurso(forms.Form):
     inscriptos = forms.IntegerField(label="Inscriptos")
 
 
+class FormularioComentario(forms.Form):
+    id = forms.IntegerField(label="ID", min_value=0, max_value=64)
+    pelicula = forms.CharField(label="pelicula", max_length=64)
+    comentario = forms.CharField(label="Comentario")
+
+
 class FormularioPelicula(forms.Form):
     nombre = forms.CharField(label="Nombre:", max_length=32)
     fecha = forms.DateField(
