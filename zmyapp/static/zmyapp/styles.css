@@ -19,7 +19,7 @@ html, body{margin:0; padding:0;}
 
 .tabla-curso {
     border: 3px solid;
-    background-color: rgb(232, 183, 120);}
+    background-color: argb(232, 183, 120);}
 .super-cabecera {
     position:relative;
 }
