@@ -21,4 +21,7 @@ urlpatterns = [
     path("agregar-curso", views.nuevo_curso, name="agregar_curso"),
     path("nuevapelicula", views.nueva_pelicula, name="nueva_pelicula"),
     path("tablapeliculas", views.tabla_peliculas, name="tabla_peliculas"),
+    path("instructores", views.tabla_instructores, name="tabla_instructores"),
+    path("nuevoinstructor", views.agregar_instructor, name="nuevoinstructor"),
+    path("instructores/<str:nombre_instructor>", views.instructor, name="instructor"),
 ]

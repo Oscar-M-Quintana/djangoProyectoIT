@@ -1,9 +1,10 @@
 {% extends "zmyapp/layout.html" %}
 <!-- Este bloque reemplazará el título original "Mi aplicación de Django". -->
-{% block title %} {{ curso.0 }} {% endblock %}
+{% block title %} Tabla de Cursos {% endblock %}
 <!-- Este bloque se ubicará dentro de la etiqueta <main> de layout.html. -->
-{% block content %}
-<table class="tabla-curso">
+  {% block content %}
+  <p></p>
+  <table class="tabla-curso">
   <thead>
     <tr>
       <th>Orden</th>
@@ -11,20 +12,25 @@
       <th>Inscriptos</th>
     </tr>
   </thead>
-  {% for nombre, inscriptos in cursos %}
+  {% for curso in cursos %}
   <tr>
     <td>{{ forloop.counter }}</td>
     <td>
-      <a href="{% url 'curso'  nombre %}">
+      <a href="{% url 'curso'  curso.nombre %}">
         {% comment %}curso/{{ nombre }}  {% endcomment %}
-        <span class="texto">{{ nombre }}</span>
+        <span class="texto">{{ curso.nombre }}</span>
       </a>
     </td>
-    <td>{{ inscriptos }}</td>
+    <td>{{ curso.inscriptos }}</td>
   </tr>
   {% endfor %}
 </table>
+<p></p>
 <a href="{% url 'agregar_curso' %}">
   <span class="texto">AGREGAR CURSO</span>
 </a>
-{% endblock %} {% load static %}
+<p></p>
+<a href="{% url 'cursos_Json' %}">
+  <span class="texto">Formato Json</span>
+</a>
+{% endblock %} 

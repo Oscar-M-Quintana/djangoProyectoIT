@@ -1,0 +1,9 @@
+{% extends "zmyapp/layout.html" %}
+<!-- Este bloque reemplazará el título original "Mi aplicación de Django". -->
+{% block title %} {{ instructor.nombre }} {% endblock %}
+<!-- Este bloque se ubicará dentro de la etiqueta <main> de layout.html. -->
+{% block content %}
+<h1>Nombre del Instructor: {{ instructor.nombre }}</h1>
+<h3>Email: {{ instructor.email }}</h3>
+<h3>Cursos asignados: {{ instructor.cursos_asignados }}</h3>
+{% endblock %}

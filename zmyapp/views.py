@@ -1,10 +1,11 @@
 import re
-import sqlite3
-from django.http import HttpResponse, JsonResponse
+from .models import Curso, Instructor
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import render
 import requests
 from django.http import Http404
 from . import forms
+import zmyapp
 
 
 def index(resquest):
@@ -163,35 +164,22 @@ def tabla_peliculas(request):
 
 
 def curso(request, nombre_curso):
-    conn = sqlite3.connect("cursos.db")
-    cursor = conn.cursor()
-    cursor.execute(
-        "SELECT nombre, inscriptos FROM cursos WHERE nombre=?", [nombre_curso]
-    )
-    curso = cursor.fetchone()
-    if curso is None:
+    try:
+        curso = Curso.objects.get(nombre=nombre_curso)
+    except Curso.DoesNotExist:
         raise Http404
     ctx = {"curso": curso}
-    conn.close()
     return render(request, "zmyapp/curso.html", ctx)
 
 
 def cursos(request):
-    conn = sqlite3.connect("cursos.db")
-    cursor = conn.cursor()
-    cursor.execute("SELECT nombre, inscriptos FROM cursos")
-    cursos = cursor.fetchall()
-    conn.close()
+    cursos = Curso.objects.all()
     ctx = {"cursos": cursos}
     return render(request, "zmyapp/cursos.html", ctx)
 
 
 def cursos_json(request):
-    conn = sqlite3.connect("cursos.db")
-    cursor = conn.cursor()
-    cursor.execute("SELECT nombre, inscriptos FROM cursos")
-    response = JsonResponse(cursor.fetchall(), safe=False)
-    conn.close()
+    response = JsonResponse(list(Curso.objects.values()), safe=False)
     return response
 
 
@@ -199,16 +187,44 @@ def nuevo_curso(request):
     if request.method == "POST":
         form = forms.FormularioCurso(request.POST)
         if form.is_valid():
-            conn = sqlite3.connect("cursos.db")
-            cursor = conn.cursor()
-            cursor.execute(
-                "INSERT INTO cursos VALUES (?, ?)",
-                (form.cleaned_data["nombre"], form.cleaned_data["inscriptos"]),
+            Curso.objects.create(
+                nombre=form.cleaned_data["nombre"],
+                inscriptos=form.cleaned_data["inscriptos"],
             )
-            conn.commit()
-            conn.close()
-            return HttpResponse("¡Curso creado correctamente!")
+            return HttpResponseRedirect("cursos")
     else:
         form = forms.FormularioCurso()
-        ctx = {"form": form}
-        return render(request, "zmyapp/agregar.html", ctx)
+    ctx = {"form": form}
+    return render(request, "zmyapp/agregar.html", ctx)
+
+
+def tabla_instructores(request):
+    tabla = Instructor.objects.all()
+    ctx = {"profes": tabla}
+    return render(request, "zmyapp/tablaInstructores.html", ctx)
+
+
+def agregar_instructor(request):
+    if request.method == "POST":
+        form = forms.FormularioInstructores(request.POST)
+        if form.is_valid():
+            Instructor.objects.create(
+                nombre=form.cleaned_data["nombre"],
+                email=form.cleaned_data["email"],
+                cursos_asignados=form.cleaned_data["cursos_asignados"],
+            )
+            return HttpResponseRedirect("instructores")
+    else:
+        form = forms.FormularioInstructores()
+    ctx = {"form": form}
+    return render(request, "zmyapp/nuevoinstructor.html", ctx)
+
+
+def instructor(request, nombre_instructor):
+    try:
+        persona = Instructor.objects.get(nombre=nombre_instructor)
+    except Instructor.DoesNotExist:
+        print(f"aqui {nombre_instructor}")
+        raise Http404
+    ctx = {"instructor": persona}
+    return render(request, "zmyapp/instructor.html", ctx)

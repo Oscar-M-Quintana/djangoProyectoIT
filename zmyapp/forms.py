@@ -28,3 +28,11 @@ class FormularioPelicula(forms.Form):
     )
     restriccion = forms.ChoiceField(label="Clasificación:", choices=edades)
     preventa = forms.BooleanField(label="¿Preventa online?", required=False)
+
+
+class FormularioInstructores(forms.Form):
+    nombre = forms.CharField(label="Nombre", max_length=128)
+    email = forms.CharField(label="Email", max_length=32)
+    cursos_asignados = forms.IntegerField(
+        label="Cursos asignados", min_value=0, max_value=64
+    )

@@ -1,0 +1,33 @@
+{% extends "zmyapp/layout.html" %}
+<!-- Este bloque reemplazará el título original "Mi aplicación de Django". -->
+{% block title %} Tabla de Instructores {% endblock %}
+<!-- Este bloque se ubicará dentro de la etiqueta <main> de layout.html. -->
+  {% block content %}
+  <p></p>
+  <table class="tabla-curso">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Cursos asignados</th>
+    </tr>
+  </thead>
+  {% for profe in profes %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>
+      <a href="{% url 'instructor'  profe.nombre %}">
+        {% comment %}{% url 'profe'  profe.nombre %}{% endcomment %}
+        <span class="texto">{{ profe.nombre }}</span>
+      </a>
+    </td>
+    <td>{{ profe.email }}</td>
+    <td>{{ profe.cursos_asignados }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<p></p>
+<a href="{% url 'nuevoinstructor' %}">
+  <span class="texto">AGREGAR INSTRUCTORES</span>
+</a>
+{% endblock %} 
